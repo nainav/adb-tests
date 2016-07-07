@@ -65,7 +65,7 @@ class cmd(Test):
         
         for x in vagrnat_up_dirs.split(',') :
 
-            output=vagrant_lib.shell_commands(self,'cd ' + self.params.get('vagrant_VARGRANTFILE_DIRS') + x+' ' + operator + ' vagrant status' )
+            output=vagrant_lib.sh_cmd(self,'cd ' + self.params.get('vagrant_VARGRANTFILE_DIRS') + x+' ' + operator + ' vagrant status',shell='powershell' )
             self.assertTrue('running' in output)
         
 
@@ -82,7 +82,7 @@ class cmd(Test):
         self.log.info('These are the locations of Vagrant files ::')
         
         for x in vagrnat_up_dirs.split(',') :
-            output=vagrant_lib.shell_commands(self, 'cd ' + self.params.get('vagrant_VARGRANTFILE_DIRS') + x+' ' + operator + 'vagrant resume')
+            output=vagrant_lib.sh_cmd(self, 'cd ' + self.params.get('vagrant_VARGRANTFILE_DIRS') + x+' ' + operator + 'vagrant resume',shell='powershell')
             self.assertTrue('Resuming' in output)
     
 
@@ -97,7 +97,7 @@ class cmd(Test):
         self.log.info('These are the locations of Vagrant files ::')
         
         for x in vagrnat_up_dirs.split(',') :
-            output=vagrant_lib.shell_commands(self,  'cd ' + self.params.get('vagrant_VARGRANTFILE_DIRS') + x+' ' + operator + 'vagrant destroy --force')
+            output=vagrant_lib.sh_cmd(self,  'cd ' + self.params.get('vagrant_VARGRANTFILE_DIRS') + x+' ' + operator + 'vagrant destroy --force',shell='powershell')
             self.assertTrue('Deleting' in output)  
 
 
